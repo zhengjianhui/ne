@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 核心XML -->
+<struts>
+<!-- 包含其他Struts2的配置文件 -->
+<include file="login.xml"></include>
+
+
+<!-- 该属性设置Struts是否支持动态调用 默认为true -->
+<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+<!-- 修改.action后缀为其他的后缀 -->
+<constant name="struts.action.extension" value="html"></constant>
+<!-- 开发中使用，可以更友好的提示错误 -->
+<constant name="struts.devMode" value="true"></constant>
+</struts>

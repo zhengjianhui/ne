@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+<package name="default" namespace="/" extends="struts-default">
+
+		<!-- 默认action的设置 
+			作用：输入的请求路径不存在时跳转该页面 
+				有些类似过滤器的拦截 Exception -->
+<!-- 		<default-action-ref name="error"></default-action-ref> -->
+		<!-- 默认界面 name 对应 默认action 的name -->
+<!-- 		<action name="error">
+			<result>WEB-INF/main/error.jsp</result>
+		</action> -->
+
+	<action name="asd" class="action.Hello">
+    	 <result>/ad.jsp</result>
+	</action>
+
+
+
+<!-- 通配符的形式 -->	
+<action name="*_*_*_*" class="{1}.{2}.{3}Action" method="{4}">
+
+<result name="login">/WEB-INF/main/login.jsp</result>
+<!-- 重定向到action 转发到安全页面 -->
+<result name="indexAction" type="redirectAction">action_login_Login_index.html</result>
+<result name="index">/WEB-INF/main/index.jsp</result>
+
+<!-- find页面的处理 -->
+<result name="find">WEB-INF/cost/find.jsp</result>
+<result name="update">WEB-INF/cost/update.jsp</result>
+
+</action>
+
+		<action name="login" class="action.Hello">
+			<result>/success.jsp</result>
+			<result name="input" type="dispatcher">/login.jsp</result>
+		
+		</action>
+
+</package>
+</struts>

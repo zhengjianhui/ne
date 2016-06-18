@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.ICost">
+  <!-- 映射的类admin 命名admin -->
+  <resultMap type="entity.Cost" id="cost">
+    <id column="cost_id" jdbcType="INTEGER" property="costID"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="base_duration" jdbcType="DOUBLE" property="baseDuration"/>
+    <result column="base_cost" jdbcType="DOUBLE" property="baseCost"/>
+    <result column="unit_cost" jdbcType="DOUBLE" property="unitCost"/>
+    <result column="status" jdbcType="CHAR" property="status"/>
+    <result column="descr" jdbcType="VARCHAR" property="descr"/>
+    <result column="creatime" jdbcType="TIMESTAMP" property="creatime"/>
+    <result column="startime" jdbcType="TIMESTAMP" property="startime"/>
+     <result column="cost_type" jdbcType="CHAR" property="costType"/>
+  </resultMap>
+
+<select id="page" resultType="int">
+	select count(cost_id) from cost
+</select>
+
+<select id="sizeAndPage" parameterType="entity.Page" resultMap="cost">
+	select * from cost  order by cost_id limit #{now},#{size}
+</select>
+
+<select id="queryCost" parameterType="entity.Cost" resultMap="cost">
+	select * from cost where cost_id = #{costID}
+</select>
+
+
+</mapper>

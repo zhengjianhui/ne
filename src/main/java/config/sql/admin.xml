@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.Login">
+  <!-- 映射的类admin 命名admin -->
+  <resultMap type="entity.Admin" id="admin">
+    <id column="admin_id" jdbcType="INTEGER" property="id"/>
+    <result column="admin_code" jdbcType="VARCHAR" property="code"/>
+    <result column="password" jdbcType="VARCHAR" property="password"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="telephone" jdbcType="VARCHAR" property="telephone"/>
+    <result column="email" jdbcType="VARCHAR" property="email"/>
+    <result column="enrolldate" jdbcType="TIMESTAMP" property="enrolldate"/>
+    
+  </resultMap>
+  
+  <select id="queryAdmin" parameterType="entity.Admin" resultMap="admin">
+	select admin_id,admin_code,password,name,telephone,email,enrolldate from admin_info
+    <where>
+    	<if test="code != null and !&quot;&quot;.equals(code.trim())">
+	    	and admin_code=#{code}
+	    </if>
+	    <if test="id != null and id != 0">
+	    	and id=#{id}
+	    </if>
+    </where>
+  </select>
+</mapper>
